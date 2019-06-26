@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1> Chơi cờ ca-rô </h1>
+    <hr>
+    <input type="number" id="x" value="">
+    <input type="number" id="y" value="">
+    <button type="button" onclick="choi()"> Chơi </button>
+    <p id="show"> </p>
+    <script>
+        let a=new Array();
+        let s="<table border='1' width='300' cellspacing='0' cellpadding='10'>";
+        for (let i=0;i<100;i++){ a[i]=new Array()};
+        for (let i=0; i<100;i++){
+            s+='<tr>';
+            for (let j=0; j<100;j++){
+                a[i][j]='.';
+                s+='<td>'+a[i][j]+'</td>';
+            }
+            s+='</tr>';
+        }
+        s+='</table>';
+        document.getElementById('show').innerHTML=s;
+        let count=1;
+        let kt=false;
+        function choi(){
+            let X=document.getElementById('x').value;
+            let Y=document.getElementById('y').value;
+            let s="<table border='1' width='300' cellspacing='0' cellpadding='10'>";
+            if (a[X][Y]!=".") alert("Ô này đã được đánh dấu")
+            else {
+                if (count % 2 == 1) a[X][Y] = 'X';
+                else a[X][Y] = 'O';
+                for (let i = 0; i < 100; i++) {
+                    s += '<tr>';
+                    for (let j = 0; j < 100; j++) s += '<td>' + a[i][j] + '</td>';
+                    s += '</tr>';
+                }
+                s += '</table';
+                document.getElementById('show').innerHTML = s;
+                count++;
+                let c = a[X][Y];
+                /*let kt1=a[X - 1][Y - 1] == c && a[X - 2][Y - 2] == c;
+                let kt2= a[X - 1][Y] == c && a[X - 2][Y] == c;
+                let kt3=a[X - 1][Y + 1] == c && a[X - 2][Y + 2] == c;
+                let kt4=a[X][Y + 1] == c && a[X][Y + 2] == c;
+                let kt5=a[X + 1][Y + 1] == c && a[X + 2][Y + 2] == c;
+                let kt6=a[X + 1][Y] == c && a[X + 2][Y] == c;
+                let kt7=a[X - 1][Y + 1] == c && a[X - 2][Y + 2] == c;
+                let kt8=a[X][Y - 1] == c && a[X][Y - 2] == c;
+                let kt9=a[X - 1][Y - 1] == c && a[X + 1][Y + 1] == c;
+                let kt10=a[X - 1][Y] == c && a[X + 1][Y] == c;
+                let kt11=a[X - 1][Y + 1] == c && a[X + 1][Y - 1] == c;
+                let kt12=a[X][Y - 1] == c && a[X][Y + 1]==c;
+                alert(kt12);*/
+                if (X==0 || X==1) {
+                    if (Y == 0 || Y == 1) {
+                        kt = a[X][Y + 1] == c && a[X][Y + 2] == c || a[X + 1][Y] == c && a[X + 2][Y] == c
+                            || a[X + 1][Y + 1] == c && a[X + 2][Y + 2] == c;
+                    } else kt = a[X][Y + 1] == c && a[X][Y + 2] == c || a[X + 1][Y] == c && a[X + 2][Y] == c || a[X + 1][Y + 1] == c && a[X + 2][Y + 2] == c
+                        || a[X][Y - 1] == c && a[X][Y - 2] == c || a[X - 1][Y + 1] == c && a[X - 2][Y + 2] == c;
+                } else kt=((a[X - 1][Y - 1] == c && a[X - 2][Y - 2] == c) ||
+                    ( a[X - 1][Y] == c && a[X - 2][Y] == c ) ||
+                    (a[X - 1][Y + 1] == c && a[X - 2][Y + 2] == c) ||
+                    (a[X][Y + 1] == c && a[X][Y + 2] == c) ||
+                    (a[X + 1][Y + 1] == c && a[X + 2][Y + 2] == c) ||
+                    (a[X + 1][Y] == c && a[X + 2][Y] == c) ||
+                    (a[X - 1][Y + 1] == c && a[X - 2][Y + 2] == c) ||
+                    (a[X][Y - 1] == c && a[X][Y - 2] == c) ||
+                    (a[X - 1][Y - 1] == c && a[X + 1][Y + 1] == c) ||
+                    (a[X - 1][Y] == c && a[X + 1][Y] == c) ||
+                    (a[X - 1][Y + 1] == c && a[X + 1][Y - 1] == c) ||
+                    (a[X][Y - 1] == c && a[X][Y + 1]==c));
+                if (kt) {
+                    if (count % 2 == 0) {
+                        alert("Nguoi choi 1 win");
+                    } else alert("Nguoi choi 2 win");
+                    kt = false;
+                    count = 1;
+                    s = "<table border='1' width='300' cellspacing='0' cellpadding='10'>";
+                    for (let i = 0; i < 100; i++) {
+                        s += '<tr>';
+                        for (let j = 0; j < 100; j++) {
+                            a[i][j] = '.';
+                            s += '<td>' + a[i][j] + '</td>';
+                        }
+                        s += '</tr>';
+                    }
+                    s += '</table>';
+                    document.getElementById('show').innerHTML = s;
+                    }
+                }
+        }
+    </script>
+</body>
+</html>

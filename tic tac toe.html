@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1> Chơi cờ ca-rô </h1>
+<hr>
+<p id="caro"></p>
+<button id="choi" onclick="choi()"> Chơi</button>
+    <script>
+            let a=new Array();
+            for (let i=0;i<100;i++){a[i]=new Array();}
+            let table="<table border='1' width='1000' cellspacing='0' cellpadding='10'>";
+            for (let i=0;i<100;i++){
+                table+="<tr>";
+                for (let j=0;j<100;j++){
+                    a[i][j]=' ';
+                    table+="<td>"+ ' ' + "</td>";
+                }
+                table+="</tr>";
+            }
+            table+="</table>";
+            document.write(table);
+        function choi() {
+            let kt = true;
+            while (kt) {
+                alert("Nguoi choi 1 danh");
+                kt = nguoichoi('X');
+                if (kt = false) alert("Nguoi 1 thang");
+                else {
+                    alert("Nguoi choi 2 danh");
+                    kt = nguoichoi('O');
+                    if (kt = false) alert("Nguoi 2 thang");
+                }
+            }
+            function nguoichoi(luot){
+                let a1=parseInt(prompt("Nhap hoanh do: "));
+                let b1=parseInt(prompt("Nhap tung do: "));
+                let i, j;
+                a[a1][b1]=luot;
+                let table="<table border='1' width='1000' cellspacing='0' cellpadding='10'>";
+                for (i=0;i<100;i++){
+                    table+="<tr>";
+                    for (j=0;j<100;j++){
+                        if (i!=a1 || j!=b1) table+="<td>"+ ' ' + "</td>";
+                        else table+="<td>"+ luot + "</td>";
+                    }
+                    table+="</tr>";
+                }
+                table+="</table>";
+                document.write(table);
+                table='';
+                let ktra;
+                if ((a[a1][b1]==luot && a[a1-1][b1-1]==luot && a[a1-2][b1-2]==luot ) ||
+                    (a[a1][b1]==luot && a[a1+1][b1+1]==luot && a[a1+2][b1+2]==luot ) ||
+                    (a[a1][b1]==luot && a[a1-1][b1]==luot && a[a1-2][b1]==luot ) ||
+                    (a[a1][b1]==luot && a[a1][b1-1]==luot && a[a1][b1-2]==luot ) ||
+                    (a[a1][b1]==luot && a[a1][b1+1]==luot && a[a1][b1+2]==luot ) ||
+                    (a[a1][b1]==luot && a[a1+1][b1]==luot && a[a1+2][b1]==luot ) ||
+                    (a[a1][b1]==luot && a[a1-1][b1+1]==luot && a[a1-2][b1+2]==luot ) ||
+                    (a[a1][b1]==luot && a[a1+1][b1-1]==luot && a[a1+2][b1-2]==luot ) ||
+                    (a[a1][b1]==luot && a[a1+1][b1+1]==luot && a[a1-1][b1-1]==luot ) ||
+                    (a[a1][b1]==luot && a[a1+1][b1-1]==luot && a[a1-1][b1+1]==luot ) ||
+                    (a[a1][b1]==luot && a[a1-1][b1]==luot && a[a1+1][b1]==luot ) ||
+                    (a[a1][b1]==luot && a[a1+1][b1]==luot && a[a1-1][b1]==luot ) ) ktra = false;
+                else ktra =true;
+                return ktra;
+            }
+
+        }
+    </script>
+</body>
+</html>
