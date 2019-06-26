@@ -44,24 +44,11 @@
                 document.getElementById('show').innerHTML = s;
                 count++;
                 let c = a[X][Y];
-                /*let kt1=a[X - 1][Y - 1] == c && a[X - 2][Y - 2] == c;
-                let kt2= a[X - 1][Y] == c && a[X - 2][Y] == c;
-                let kt3=a[X - 1][Y + 1] == c && a[X - 2][Y + 2] == c;
-                let kt4=a[X][Y + 1] == c && a[X][Y + 2] == c;
-                let kt5=a[X + 1][Y + 1] == c && a[X + 2][Y + 2] == c;
-                let kt6=a[X + 1][Y] == c && a[X + 2][Y] == c;
-                let kt7=a[X - 1][Y + 1] == c && a[X - 2][Y + 2] == c;
-                let kt8=a[X][Y - 1] == c && a[X][Y - 2] == c;
-                let kt9=a[X - 1][Y - 1] == c && a[X + 1][Y + 1] == c;
-                let kt10=a[X - 1][Y] == c && a[X + 1][Y] == c;
-                let kt11=a[X - 1][Y + 1] == c && a[X + 1][Y - 1] == c;
-                let kt12=a[X][Y - 1] == c && a[X][Y + 1]==c;
-                alert(kt12);*/
                 if (X==0 || X==1) {
                     if (Y == 0 || Y == 1) {
                         kt = a[X][Y + 1] == c && a[X][Y + 2] == c || a[X + 1][Y] == c && a[X + 2][Y] == c
                             || a[X + 1][Y + 1] == c && a[X + 2][Y + 2] == c;
-                    } else kt = a[X][Y + 1] == c && a[X][Y + 2] == c || a[X + 1][Y] == c && a[X + 2][Y] == c || a[X + 1][Y + 1] == c && a[X + 2][Y + 2] == c
+                    } else kt = a[X][Ygit  + 1] == c && a[X][Y + 2] == c || a[X + 1][Y] == c && a[X + 2][Y] == c || a[X + 1][Y + 1] == c && a[X + 2][Y + 2] == c
                         || a[X][Y - 1] == c && a[X][Y - 2] == c || a[X - 1][Y + 1] == c && a[X - 2][Y + 2] == c;
                 } else kt=((a[X - 1][Y - 1] == c && a[X - 2][Y - 2] == c) ||
                     ( a[X - 1][Y] == c && a[X - 2][Y] == c ) ||
