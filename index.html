@@ -15,19 +15,20 @@
     <p id="show"> </p>
     <script>
         let a=new Array();
-        let s="<table border='1' width='300' cellspacing='0' cellpadding='10'>";
         for (let i=0;i<102;i++){ a[i]=new Array()};
         for (let i=0;i<102;i++)
             for (let j=0;j<102;j++) a[i][j]='.';
-        for (let i=2; i<102;i++){
-            s+='<tr>';
-            for (let j=2; j<102;j++){
-                s+='<td>'+a[i][j]+'</td>';
+        xuat();
+        function xuat(){
+            s = "<table border='1' width='300' cellspacing='0' cellpadding='10'>";
+            for (let i = 2; i < 102; i++) {
+                s += '<tr>';
+                for (let j = 2; j < 102; j++) s += '<td>' + a[i][j] + '</td>';
+                s += '</tr>';
             }
-            s+='</tr>';
+            s += '</table>';
+            document.getElementById('show').innerHTML = s;
         }
-        s+='</table>';
-        document.getElementById('show').innerHTML=s;
         let count=1;
         let kt=false;
         function choi(){
@@ -35,18 +36,11 @@
             X=parseInt(X)+2;
             let Y=document.getElementById('y').value;
             Y=parseInt(Y)+2;
-            let s="<table border='1' width='300' cellspacing='0' cellpadding='10'>";
             if (a[X][Y]!=".") alert("Ô này đã được đánh dấu")
             else {
                 if (count % 2 == 1) a[X][Y] = 'X';
                 else a[X][Y] = 'O';
-                for (let i = 2; i < 102; i++) {
-                    s += '<tr>';
-                    for (let j = 2; j < 102; j++) s += '<td>' + a[i][j] + '</td>';
-                    s += '</tr>';
-                }
-                s += '</table>';
-                document.getElementById('show').innerHTML = s;
+                xuat();
                 count++;
                 let c = a[X][Y];
                 kt=((a[X - 1][Y - 1] == c && a[X - 2][Y - 2] == c) ||
@@ -67,18 +61,10 @@
                     } else alert("Y win");
                     kt = false;
                     count = 1;
-                    s = "<table border='1' width='300' cellspacing='0' cellpadding='10'>";
+
                     for (let i=0;i<102;i++)
                         for (let j=0;j<102;j++) a[i][j]='.';
-                    for (let i = 2; i < 102; i++) {
-                        s += '<tr>';
-                        for (let j = 2; j < 102; j++) {
-                            s += '<td>' + a[i][j] + '</td>';
-                        }
-                        s += '</tr>';
-                    }
-                    s += '</table>';
-                    document.getElementById('show').innerHTML = s;
+                    xuat();
                     }
                 }
             }
