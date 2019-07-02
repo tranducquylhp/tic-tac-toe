@@ -15,9 +15,9 @@
     <p id="show"> </p>
     <script>
         let a=new Array();
-        for (let i=0;i<102;i++){ a[i]=new Array()};
-        for (let i=0;i<102;i++)
-            for (let j=0;j<102;j++) a[i][j]='.';
+        for (let i=0;i<104;i++){ a[i]=new Array()};
+        for (let i=0;i<104;i++)
+            for (let j=0;j<104;j++) a[i][j]='.';
         xuat();
         function xuat(){
             s = "<table border='1' width='300' cellspacing='0' cellpadding='10'>";
@@ -36,7 +36,7 @@
             X=parseInt(X)+2;
             let Y=document.getElementById('y').value;
             Y=parseInt(Y)+2;
-            if (a[X][Y]!=".") alert("Ô này đã được đánh dấu")
+            if (a[X][Y]!=".") alert("Ô này đã được đánh dấu");
             else {
                 if (count % 2 == 1) a[X][Y] = 'X';
                 else a[X][Y] = 'O';
@@ -62,8 +62,8 @@
                     kt = false;
                     count = 1;
 
-                    for (let i=0;i<102;i++)
-                        for (let j=0;j<102;j++) a[i][j]='.';
+                    for (let i=0;i<104;i++)
+                        for (let j=0;j<104;j++) a[i][j]='.';
                     xuat();
                     }
                 }
